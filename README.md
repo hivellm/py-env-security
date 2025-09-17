@@ -1,12 +1,21 @@
-# 🔒 HiveLLM Secure Script Execution Environment (BIP-04)
+# 🔒 HiveLLM Secure Script Execution Environment
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![BIP-04](https://img.shields.io/badge/BIP--04-In%20Review-orange.svg)](https://github.com/hivellm/hive-gov/tree/main/bips/BIP-04)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org/)
+[![Security](https://img.shields.io/badge/Security-Sandboxed-green.svg)](#security-features)
+
+> **BIP-04 Implementation** - Secure script execution environment with comprehensive security controls
 
 ## 📋 Overview
 
-This repository contains the **BIP-04 implementation** for HiveLLM: a comprehensive Secure Script Execution Environment that provides sandboxed execution of Python scripts with comprehensive security controls, resource limits, and audit logging.
+Secure Script Execution Environment that provides sandboxed execution of Python scripts with:
 
-**BIP-04 Status**: In Peer Review - Changes Requested  
-**Repository**: Dedicated Python implementation  
-**Migrated From**: `cmmv-hive/scripts/secure/`
+- **🔒 Process Isolation**: Scripts run in isolated subprocesses
+- **⚡ Resource Limits**: CPU, memory, and disk I/O controls
+- **📊 Security Monitoring**: Real-time security event tracking
+- **📝 Audit Logging**: Comprehensive execution audit trails
+- **🛡️ Policy Management**: Configurable security policies
 
 ## Architecture
 
@@ -302,15 +311,14 @@ logging.basicConfig(level=logging.DEBUG)
 - **Machine Learning**: Anomaly detection improvements
 - **Performance Profiling**: Detailed execution profiling
 
+## 🔗 Part of HiveLLM Ecosystem
+
+This secure execution environment is part of the [HiveLLM ecosystem](../hivellm) - see main repository for complete system overview.
+
 ---
 
-## Demo
-
-Run the demonstration script:
-
-```bash
-cd scripts/examples
-python secure_execution_demo.py
-```
+**BIP Implementation**: BIP-04 - Secure Script Execution Environment  
+**Status**: ✅ Migrated and Functional  
+**Repository**: HiveLLM Security Environment
 
 This will create a sample script and demonstrate the secure execution environment capabilities.
