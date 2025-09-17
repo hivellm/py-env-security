@@ -1,0 +1,154 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hivellm-secure-execution"
+version = "1.0.0"
+description = "BIP-04: Secure Script Execution Environment for HiveLLM"
+readme = "README.md"
+authors = [{name = "HiveLLM Team", email = "team@hivellm.org"}]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+keywords = ["security", "sandboxing", "governance", "hivellm", "bip-04"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers", 
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9", 
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+]
+
+dependencies = [
+    "psutil>=5.9.0",
+    "cryptography>=41.0.0",
+    "pyyaml>=6.0",
+    "requests>=2.31.0",
+    "click>=8.1.0",
+    "colorama>=0.4.6",
+    "structlog>=23.0.0",
+    "watchdog>=3.0.0",
+    "jsonschema>=4.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.0", 
+    "black>=23.7.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "bandit>=1.7.5",
+]
+monitoring = [
+    "prometheus-client>=0.17.0",
+]
+container = [
+    "docker>=6.1.0",
+]
+
+[project.scripts]
+hivellm-secure = "executor:main"
+hivellm-audit = "audit:main"
+hivellm-monitor = "monitor:main" 
+hivellm-validate = "validate_deployment:main"
+
+[project.urls]
+Homepage = "https://github.com/hivellm/hive-py-env-security"
+Documentation = "https://github.com/hivellm/hive-py-env-security/blob/main/README.md"
+Repository = "https://github.com/hivellm/hive-py-env-security.git"
+Issues = "https://github.com/hivellm/hive-py-env-security/issues"
+
+[tool.setuptools.packages.find]
+include = ["*"]
+exclude = ["tests*", "__pycache__*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  __pycache__
+  | \.git
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --cov=. --cov-report=term-missing --cov-report=html"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*", 
+    "__pycache__/*",
+    "setup.py",
+    "venv/*",
+    ".venv/*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report] 
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "__pycache__", ".venv", "venv"]
+skips = ["B101", "B601"]  # Skip assert and shell usage warnings for legitimate use cases
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "docs/source/conf.py",
+    "old",
+    "build",
+    "dist",
+    ".venv",
+    "venv",
+]

@@ -1,0 +1,39 @@
+# HiveLLM BIP-04: Secure Script Execution Environment
+# Python dependencies for secure script execution and monitoring
+
+# Core dependencies
+psutil>=5.9.0          # System and process monitoring
+cryptography>=41.0.0   # Cryptographic operations and secure hashing
+pyyaml>=6.0           # Configuration file parsing
+requests>=2.31.0      # HTTP requests for health checks
+click>=8.1.0          # CLI interface
+colorama>=0.4.6       # Colored terminal output
+
+# Security and sandboxing
+docker>=6.1.0         # Container-based sandboxing
+seccomp>=0.1.2        # System call filtering (Linux only)
+apparmor>=3.0.0       # Application armor profiles (Linux only)
+
+# Monitoring and logging
+prometheus-client>=0.17.0  # Metrics collection
+structlog>=23.0.0     # Structured logging
+watchdog>=3.0.0       # File system monitoring
+
+# Testing and development
+pytest>=7.4.0         # Testing framework
+pytest-cov>=4.1.0     # Test coverage
+pytest-mock>=3.11.0   # Mocking utilities
+black>=23.7.0         # Code formatting
+flake8>=6.0.0         # Linting
+mypy>=1.5.0           # Type checking
+bandit>=1.7.5         # Security linting
+
+# Performance and utilities
+numpy>=1.24.0         # Numerical computations
+pandas>=2.0.0         # Data analysis (optional)
+jsonschema>=4.19.0    # JSON schema validation
+redis>=4.6.0          # Caching and message queuing (optional)
+
+# Development utilities
+ipython>=8.14.0       # Interactive Python shell
+jupyter>=1.0.0        # Notebook support (optional)
